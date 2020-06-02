@@ -4,12 +4,20 @@ import java.util.*;
 /**
  *  Timer 모드
  */
-public class TimerMode {
+public class TimerMode implements Runnable{
 
     /**
      * Default constructor
      */
     public TimerMode() {
+        timerTime.setHour(0);
+        timerTime.setMinute(0);
+        timerTime.setSecond(0);
+        timerTime.setM_second(0);
+    }
+
+    public TimerMode(Time timerTime) {
+        this.timerTime = timerTime;
     }
 
     /**
@@ -20,40 +28,25 @@ public class TimerMode {
     /**
      * 
      */
-    public Time timerTime;
+    private Time timerTime;
+    Thread stopwatchThread=null;
 
 
-
-
-    /**
-     * @param currentState
-     */
-    public void changeMode(int currentState) {
-        // TODO implement here
-    }
 
     /**
      * @param currentState 
      * @return
      */
     public int enterSetSection(int currentState) {
-        // TODO implement here
         switch (currentState){
             case 19:
-                currentState=20;
-                // set timer hour
-                break;
+                return 19;
             case 20:
-                currentState=21;
-                // set timer minute
-                break;
+                return 20;
             case 21:
-                currentState=22;
-                // set timer second
-                break;
+                return 21;
             case 22:
-                currentState=19;
-                break;
+                return 22;
             default:
                 break;
         }
@@ -64,7 +57,37 @@ public class TimerMode {
      * @param currentState
      */
     public void changeValue(int currentState, int button) {
-        // TODO implement here
+        switch(currentState){
+            case 20:
+                if(button ==1){
+                    if(timerTime.getHour()==99) timerTime.setHour(0);
+                    else timerTime.setHour(timerTime.getHour()+1);
+                }else if(button ==3){
+                    if(timerTime.getHour()==0) timerTime.setHour(99);
+                    else timerTime.setHour(timerTime.getHour()-1);
+                }
+                break;
+            case 21:
+                if(button ==1){
+                    if(timerTime.getMinute()==59) timerTime.setMinute(0);
+                    else timerTime.setMinute(timerTime.getMinute()+1);
+                }else if(button ==3){
+                    if(timerTime.getMinute()==0) timerTime.setMinute(59);
+                    else timerTime.setMinute(timerTime.getMinute()-1);
+                }
+                break;
+            case 22:
+                if(button ==1){
+                    if(timerTime.getSecond()==59) timerTime.setSecond(0);
+                    else timerTime.setSecond(timerTime.getSecond()+1);
+                }else if(button ==3){
+                    if(timerTime.getSecond()==0) timerTime.setSecond(59);
+                    else timerTime.setSecond(timerTime.getSecond()-1);
+                }
+                break;
+            default:
+                return;
+        }
 
     }
 
@@ -72,7 +95,9 @@ public class TimerMode {
      * @return
      */
     public Time startTimer() {
-        // TODO implement here
+        onOff=true;
+        TimerMode timerCount = new TimerMode(timerTime);
+        stopwatchThread = new Thread(timerCount,"timer");
 
         return null;
     }
@@ -81,17 +106,44 @@ public class TimerMode {
      * @return
      */
     public Time stopTimer() {
-        // TODO implement here
+        onOff=false;
+        stopwatchThread.interrupt();
         return null;
     }
 
     /**
      * @return
      */
-    public Time resetTimer() {
-        // TODO implement here
-        return null;
+    public void resetTimer() {
+        timerTime.setHour(0);
+        timerTime.setMinute(0);
+        timerTime.setSecond(0);
+        timerTime.setM_second(0);
     }
 
+
+    @Override
+    public void run() {
+        while(onOff){
+            int sec=timerTime.getSecond();
+            int min=timerTime.getMinute();
+            int hour= timerTime.getHour();
+            if(sec>0){
+                timerTime.setSecond(--sec);
+            }else if(sec==0){
+                // sec 값이 0이라면 sec=59
+                timerTime.setSecond(59);
+                if(min>0){
+                    // minute-1
+                    timerTime.setMinute(--min);
+                }else if(min==0){
+                    // minute 값이 0이라면 minute=59, hour--
+                    timerTime.setMinute(59);
+                    timerTime.setHour(--hour);
+                }
+            }
+        }
+
+    }
 
 }
