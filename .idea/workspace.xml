@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="757b6c67-7236-4c33-b8c5-721561bd4ddf" name="Default Changelist" comment="" />
+    <list default="true" id="757b6c67-7236-4c33-b8c5-721561bd4ddf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +18,14 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="feuziq47 &lt;feuziq47@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1cVwXGlEnGMkHgfLislV9kAHPqP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -20,11 +34,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3643678" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Model" />
+    </key>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -34,6 +54,10 @@
       <option name="presentableId" value="Default" />
       <updated>1590627106305</updated>
       <workItem from="1590627108796" duration="1354000" />
+      <workItem from="1590939274853" duration="5621000" />
+      <workItem from="1590980075531" duration="1624000" />
+      <workItem from="1591010050222" duration="6372000" />
+      <workItem from="1591073047442" duration="15815000" />
     </task>
     <servers />
   </component>
@@ -41,9 +65,33 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Plugins" timestamp="1591073098203">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1591073098203" />
     <state x="552" y="178" key="#Project_Structure" timestamp="1590627695291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1590627695291" />
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1591085545348">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591085545348" />
+    <state x="1057" y="30" key="CommitChangelistDialog2" timestamp="1591093823614">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1057" y="30" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591093823614" />
+    <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1591073048274">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="629" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591073048274" />
+    <state x="1057" y="43" width="766" height="960" key="find.popup" timestamp="1590939544214">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1057" y="43" width="766" height="960" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590939544214" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1591086741175">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591086741175" />
   </component>
 </project>
