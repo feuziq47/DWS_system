@@ -4,15 +4,15 @@ import java.util.Calendar;
 import java.util.*;
 
 /**
- * 
+ *
  */
-public class TimekeepingMode implements UI_EX{
+public class TimekeepingMode implements UI_EX {
 
     private Date currentDate = new Date();
     private Time currentTime = new Time();
     private Calendar time;
     private String[] world = {"KOREA", "AMERICA", "EUROPE", "CHINA", "RUSSIA", "SINGAPORE"};
-    private String currentWorld ="KOREA";
+    private String currentWorld = "KOREA";
     private String[] displayTime = new String[6];
 
     public TimekeepingMode() {
@@ -24,6 +24,11 @@ public class TimekeepingMode implements UI_EX{
         currentTime.setHour(time.get(Calendar.HOUR_OF_DAY));
         currentTime.setMinute(time.get(Calendar.MINUTE));
         currentTime.setSecond(time.get(Calendar.SECOND));
+
+        Timer timer = new Timer();
+        long delay =0;
+        long inteval = 1000;
+        timer.scheduleAtFixedRate(calculateTask,delay,inteval);
     }
 
     public int enterSetSection(int currentState) {
@@ -54,7 +59,7 @@ public class TimekeepingMode implements UI_EX{
     }
 
     public void changeValue(int currentState, int button) {
-        switch(currentState) {
+        switch (currentState) {
             // time의 값을 currentTime에 추가해주기.
             case 2: // year
                 if (button == 1) {
@@ -163,13 +168,27 @@ public class TimekeepingMode implements UI_EX{
             case "SINGAPORE":
                 currentWorld = "KOREA";
                 break;
-            default :
+            default:
                 currentWorld = "KOREA";
                 break;
         }
     }
+    TimerTask calculateTask = new TimerTask() {
+        @Override
+        public void run() {
+            time=Calendar.getInstance();
+            time.add(Calendar.MILLISECOND, 10);
+            currentDate.setYear(time.get(Calendar.YEAR));
+            currentDate.setMonth(time.get(Calendar.MONTH));
+            currentDate.setDay(time.get(Calendar.DATE));
+            currentTime.setHour(time.get(Calendar.HOUR_OF_DAY));
+            currentTime.setMinute(time.get(Calendar.MINUTE));
+            currentTime.setSecond(time.get(Calendar.SECOND));
+        }
+    };
 
-    public String[] display(){
+
+    public String[] display() {
         displayTime[0] = Integer.toString(currentDate.getYear());
         displayTime[1] = Integer.toString(currentDate.getMonth());
         displayTime[2] = Integer.toString(currentDate.getDay());
