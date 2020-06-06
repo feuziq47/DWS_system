@@ -1,44 +1,20 @@
-
+package Model;
 import java.util.*;
 
 /**
  * 
  */
-public class UI {
+public interface UI {
 
-    /**
-     * Default constructor
-     */
-    public UI() {
-
-    }
 
     /**
      * 
      */
-    public void display() {
-        // TODO implement here
-    }
+    public void display1(String string);
 
-    /**
-     * 
-     */
-    public void showCurrentTime() {
-        // TODO implement here
-    }
+    public void display2(String string);
 
-    /**
-     * 
-     */
-    public void showCurrentDate() {
-        // TODO implement here
-    }
+    public void displayMain(String string);
 
-    /**
-     * 
-     */
-    public void ringing() {
-        // TODO implement here
-    }
 
 }
