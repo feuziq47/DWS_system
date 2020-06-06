@@ -15,6 +15,15 @@ public class GUI extends JFrame{
         this.setTitle("DWS");
         this.setSize(600,650);
 
+        background = new JPanel();
+        A = new JButton("A");
+        B = new JButton("B");
+        C = new JButton("C");
+        D = new JButton("D");
+        watch = new JLabel();
+        textField1= new JTextField();
+        textField2 = new JTextField();
+        textField3 = new JTextField();
         watch.setBounds(90,0,394,600);
         background.setLayout(null);
 
@@ -28,28 +37,28 @@ public class GUI extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                System.out.println("A");
+
             }
         });
         B.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                System.out.println("B");
+
             }
         });
         C.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                System.out.println("C");
+
             }
         });
         D.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                System.out.println("D");
+
             }
         });
 
@@ -84,4 +93,15 @@ public class GUI extends JFrame{
         this.setVisible(true);
     }
 
+    public void setDisplay1(String world){
+        textField1.setText(world);
+    }
+
+    public void setDisplay2(String currentDate){
+        textField2.setText(currentDate);
+    }
+
+    public void setDisplay3(String currentTime){
+        textField3.setText(currentTime);
+    }
 }
