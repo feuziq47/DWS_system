@@ -1,43 +1,32 @@
 package Model;
 import java.util.*;
 
-/**
- *  Timer 모드
- */
+
 public class TimerMode{
 
     /**
      * Default constructor
      */
     public TimerMode() {
-
+        timerTime = new Time();
         timerTime.setHour(0);
         timerTime.setMinute(0);
         timerTime.setSecond(0);
         timerTime.setM_second(0);
     }
 
-    public TimerMode(Time timerTime) {
-        this.timerTime = timerTime;
-    }
+
     Timer timer = new Timer();
-    /**
-     * Timer 전원
-     */
+
+
     private boolean onOff=false;
 
-    /**
-     * 
-     */
     private Time timerTime;
     Thread stopwatchThread=null;
 
 
 
-    /**
-     * @param currentState 
-     * @return
-     */
+
     public int enterSetSection(int currentState) {
         switch (currentState){
             case 19:
@@ -54,9 +43,7 @@ public class TimerMode{
         return currentState;
     }
 
-    /**
-     * @param currentState
-     */
+
     public void changeValue(int currentState, int button) {
         switch(currentState){
             case 20:
@@ -92,9 +79,6 @@ public class TimerMode{
 
     }
 
-    /**
-     * @return
-     */
     public Time startTimer() {
         onOff=true;
 
@@ -103,18 +87,12 @@ public class TimerMode{
         return null;
     }
 
-    /**
-     * @return
-     */
     public Time stopTimer() {
         onOff=false;
         timerTask.cancel();
         return null;
     }
 
-    /**
-     * @return
-     */
     public void resetTimer() {
         timerTime.setHour(0);
         timerTime.setMinute(0);
