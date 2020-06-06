@@ -30,7 +30,7 @@ public class BrightcontrolMode {
      * @param currentState
      */
     public void changeMode(int currentState) {
-        // TODO implement here
+
 
     }
 
@@ -39,7 +39,7 @@ public class BrightcontrolMode {
      * @return
      */
     public boolean checkBC() {
-        // TODO implement here
+
         return brightness;
     }
 
@@ -55,7 +55,7 @@ public class BrightcontrolMode {
      * brightLevel의 값을 0으로 초기화
      */
     public void initializeBC() {
-        // TODO implement here
+
         brightLevel=0;
     }
 

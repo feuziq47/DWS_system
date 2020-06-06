@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="757b6c67-7236-4c33-b8c5-721561bd4ddf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/BrightcontrolMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/BrightcontrolMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DWS_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DWS_controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,10 +57,33 @@
       <workItem from="1591010050222" duration="6372000" />
       <workItem from="1591073047442" duration="15815000" />
     </task>
+    <task id="LOCAL-00001" summary="salkdfnklasf">
+      <created>1591438634778</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591438634778</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="salkdfnklasf" />
+    <option name="LAST_COMMIT_MESSAGE" value="salkdfnklasf" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Plugins" timestamp="1591073098203">
@@ -73,14 +94,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1590627695291" />
-    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1591085545348">
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1591438244608">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591085545348" />
-    <state x="1057" y="30" key="CommitChangelistDialog2" timestamp="1591093823614">
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591438244608" />
+    <state x="1057" y="30" key="CommitChangelistDialog2" timestamp="1591438633564">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1057" y="30" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591093823614" />
+    <state x="1057" y="30" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591438633564" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1591438643020">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591438643020" />
     <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1591073048274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

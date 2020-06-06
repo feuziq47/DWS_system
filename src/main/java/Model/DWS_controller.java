@@ -12,7 +12,14 @@ public class DWS_controller {
      * Default constructor
      */
     public DWS_controller() {
-
+        TKM = new TimekeepingMode();
+        STM = new StopwatchMode();
+        ALM = new AlarmMode();
+        WLT = new WorldtimeMode();
+        BLC = new BrightcontrolMode();
+        SWM = new SWMode();
+        TRM = new TimerMode();
+        gui = new GUI();
     }
 
     /**
@@ -58,7 +65,7 @@ public class DWS_controller {
     private SWMode SWM;
     private TimerMode TRM;
     private Ring ring;
-
+    private GUI gui;
 
 
 

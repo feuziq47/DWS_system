@@ -3,17 +3,15 @@ package Model;
 import java.util.Calendar;
 import java.util.*;
 
-/**
- *
- */
-public class TimekeepingMode implements UI_EX {
+public class TimekeepingMode{
 
     private Date currentDate = new Date();
     private Time currentTime = new Time();
     private Calendar time;
     private String[] world = {"KOREA", "AMERICA", "EUROPE", "CHINA", "RUSSIA", "SINGAPORE"};
     private String currentWorld = "KOREA";
-    private String[] displayTime = new String[6];
+    private String[] displayTime = new String[3];
+    private String[] displayDate = new String[3];
 
     public TimekeepingMode() {
         this.time = Calendar.getInstance();
@@ -53,10 +51,7 @@ public class TimekeepingMode implements UI_EX {
         return 0;
     }
 
-
-    public void changeMode(int currentState) {
-        // TODO implement here
-    }
+    public void changeMode(int currentState) { }
 
     public void changeValue(int currentState, int button) {
         switch (currentState) {
@@ -147,7 +142,6 @@ public class TimekeepingMode implements UI_EX {
         }
     }
 
-
     public void nextWorld() {
         switch (currentWorld) {
             case "KOREA":
@@ -187,15 +181,25 @@ public class TimekeepingMode implements UI_EX {
         }
     };
 
-
-    public String[] display() {
-        displayTime[0] = Integer.toString(currentDate.getYear());
-        displayTime[1] = Integer.toString(currentDate.getMonth());
-        displayTime[2] = Integer.toString(currentDate.getDay());
-        displayTime[3] = Integer.toString(currentTime.getHour());
-        displayTime[4] = Integer.toString(currentTime.getMinute());
-        displayTime[5] = Integer.toString(currentTime.getSecond());
-        return displayTime;
+    public String displayTime() {
+        displayTime[0] = Integer.toString(currentTime.getHour());
+        displayTime[1] = Integer.toString(currentTime.getMinute());
+        displayTime[2] = Integer.toString(currentTime.getSecond());
+        String result = displayTime[0] + displayTime[1] + displayTime[2];
+        return result;
     }
+
+    public String displayDate() {
+        displayDate[0] = Integer.toString(currentDate.getYear());
+        displayDate[1] = Integer.toString(currentDate.getMonth());
+        displayDate[2] = Integer.toString(currentDate.getDay());
+        String result = displayDate[0] + displayDate[1] + displayDate[2];
+        return result;
+    }
+
+    public String displayWorld(){
+        return this.currentWorld;
+    }
+
 
 }
