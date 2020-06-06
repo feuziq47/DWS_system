@@ -1,22 +1,23 @@
 package Model;
 
-
+import java.util.Calendar;
 import java.util.*;
 
 /**
  * 
  */
-public class TimekeepingMode {
+public class TimekeepingMode implements UI_EX{
 
     private Date currentDate = new Date();
     private Time currentTime = new Time();
-    private Calendar time = Calendar.getInstance();
+    private Calendar time;
     private String[] world = {"KOREA", "AMERICA", "EUROPE", "CHINA", "RUSSIA", "SINGAPORE"};
     private String currentWorld ="KOREA";
-    /**
-     * Default constructor
-     */
+    private String[] displayTime = new String[6];
+
     public TimekeepingMode() {
+        this.time = Calendar.getInstance();
+        this.time.clear();
         currentDate.setYear(time.get(Calendar.YEAR));
         currentDate.setMonth(time.get(Calendar.MONTH));
         currentDate.setDay(time.get(Calendar.DAY_OF_MONTH));
@@ -25,18 +26,6 @@ public class TimekeepingMode {
         currentTime.setSecond(time.get(Calendar.SECOND));
     }
 
-
-    /**
-     * @param currentState
-     */
-    public void changeMode(int currentState) {
-        // TODO implement here
-    }
-
-    /**
-     * @param currentState 
-     * @return
-     */
     public int enterSetSection(int currentState) {
         switch (currentState) {
             case 0: //기본
@@ -59,66 +48,74 @@ public class TimekeepingMode {
         return 0;
     }
 
-    /**
-     * @param currentState
-     */
+
+    public void changeMode(int currentState) {
+        // TODO implement here
+    }
+
     public void changeValue(int currentState, int button) {
         switch(currentState) {
             // time의 값을 currentTime에 추가해주기.
             case 2: // year
                 if (button == 1) {
-                    // 증가
                     time.add(Calendar.YEAR, 1);
+                    currentDate.setYear(time.get(Calendar.YEAR));
                 } else if (button == 3) {
-                    // 감소
                     time.add(Calendar.YEAR, -1);
                     if (time.get(Calendar.YEAR) < 1970)
                         time.set(Calendar.YEAR, 1970);
+                    currentDate.setYear(time.get(Calendar.YEAR));
+
                 }
                 break;
             case 3: //month
                 if (button == 1) {
-                    // 증가
                     time.add(Calendar.MONTH, 1);
+                    currentDate.setMonth(time.get(Calendar.MONTH));
                 } else if (button == 3) {
-                    // 감소
                     time.add(Calendar.MONTH, -1);
+                    currentDate.setMonth(time.get(Calendar.MONTH));
                 }
                 break;
             case 4: // day
                 if (button == 1) {
-                    // 증가
                     time.add(Calendar.DATE, 1);
+                    currentDate.setDay(time.get(Calendar.DATE));
                 } else if (button == 3) {
-                    // 감소
-                    time.add(Calendar.MONTH, -1);
+                    time.add(Calendar.DATE, -1);
+                    currentDate.setDay(time.get(Calendar.DATE));
                 }
                 break;
             case 5: //hour
                 if (button == 1) {
-                    // 증가
                     time.add(Calendar.HOUR_OF_DAY, 1);
+                    currentTime.setHour(time.get(Calendar.HOUR_OF_DAY));
                 } else if (button == 3) {
-                    // 감소
                     time.add(Calendar.HOUR_OF_DAY, -1);
+                    currentTime.setHour(time.get(Calendar.HOUR_OF_DAY));
                 }
                 break;
             case 6: //minute
                 if (button == 1) {
-                    // 증가
                     time.add(Calendar.MINUTE, 1);
+                    currentTime.setMinute(time.get(Calendar.MINUTE));
                 } else if (button == 3) {
-                    // 감소
                     time.add(Calendar.MINUTE, -1);
+                    currentTime.setMinute(time.get(Calendar.MINUTE));
+                }
+                break;
+            case 7:
+                if (button == 1) {
+                    time.add(Calendar.SECOND, 1);
+                    currentTime.setSecond(time.get(Calendar.SECOND));
+                } else if (button == 3) {
+                    time.add(Calendar.MINUTE, -1);
+                    currentTime.setSecond(time.get(Calendar.SECOND));
                 }
                 break;
         }
-
     }
 
-    /**
-     * 
-     */
     public void previousWorld() {
         switch (currentWorld) {
             case "KOREA":
@@ -139,14 +136,13 @@ public class TimekeepingMode {
             case "SINGAPORE":
                 currentWorld = "RUSSIA";
                 break;
+            default:
+                currentWorld = "KOREA";
+                break;
         }
-
-
     }
 
-    /**
-     * 
-     */
+
     public void nextWorld() {
         switch (currentWorld) {
             case "KOREA":
@@ -167,9 +163,20 @@ public class TimekeepingMode {
             case "SINGAPORE":
                 currentWorld = "KOREA";
                 break;
+            default :
+                currentWorld = "KOREA";
+                break;
         }
+    }
 
-
+    public String[] display(){
+        displayTime[0] = Integer.toString(currentDate.getYear());
+        displayTime[1] = Integer.toString(currentDate.getMonth());
+        displayTime[2] = Integer.toString(currentDate.getDay());
+        displayTime[3] = Integer.toString(currentTime.getHour());
+        displayTime[4] = Integer.toString(currentTime.getMinute());
+        displayTime[5] = Integer.toString(currentTime.getSecond());
+        return displayTime;
     }
 
 }
