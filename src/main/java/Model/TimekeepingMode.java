@@ -170,8 +170,7 @@ public class TimekeepingMode{
     TimerTask calculateTask = new TimerTask() {
         @Override
         public void run() {
-            time=Calendar.getInstance();
-            time.add(Calendar.MILLISECOND, 10);
+            time.add(Calendar.SECOND, 1);
             currentDate.setYear(time.get(Calendar.YEAR));
             currentDate.setMonth(time.get(Calendar.MONTH));
             currentDate.setDay(time.get(Calendar.DATE));
@@ -182,17 +181,41 @@ public class TimekeepingMode{
     };
 
     public String displayTime() {
-        displayTime[0] = Integer.toString(currentTime.getHour());
-        displayTime[1] = Integer.toString(currentTime.getMinute());
-        displayTime[2] = Integer.toString(currentTime.getSecond());
+        displayTime[0] = (time.get(Calendar.HOUR_OF_DAY) < 10 ? "0" : "") + time.get(Calendar.HOUR_OF_DAY) + " ";
+        displayTime[1] = (time.get(Calendar.MINUTE) < 10 ? "0" : "")+ time.get(Calendar.MINUTE) + " ";
+        displayTime[2] = (time.get(Calendar.SECOND) < 10 ? "0" : "")+time.get(Calendar.SECOND) + " ";
         String result = displayTime[0] + displayTime[1] + displayTime[2];
         return result;
     }
 
+    public String displayYear(){
+        return (time.get(Calendar.YEAR) + " ");
+    }
+
+    public String displayMonth(){
+        return (time.get(Calendar.MONTH) < 9 ? "0" : "") + (time.get(Calendar.MONTH)+1 + " ");
+    }
+
+    public String displayDay(){
+        return (time.get(Calendar.DAY_OF_MONTH) < 10 ? "0" : "") + (time.get(Calendar.DAY_OF_MONTH));
+    }
+
+    public String displayHour(){
+        return (time.get(Calendar.HOUR_OF_DAY) < 10 ? "0" : "") + time.get(Calendar.HOUR_OF_DAY) + " ";
+    }
+
+    public String displayMinute(){
+        return (time.get(Calendar.MINUTE) < 10 ? "0" : "")+ time.get(Calendar.MINUTE) + " ";
+    }
+
+    public String displaySecond(){
+        return (time.get(Calendar.SECOND) < 10 ? "0" : "")+time.get(Calendar.SECOND) + " ";
+    }
+
     public String displayDate() {
-        displayDate[0] = Integer.toString(currentDate.getYear());
-        displayDate[1] = Integer.toString(currentDate.getMonth());
-        displayDate[2] = Integer.toString(currentDate.getDay());
+        displayDate[0] = (time.get(Calendar.YEAR) + " ");
+        displayDate[1] = (time.get(Calendar.MONTH) < 9 ? "0" : "") + (time.get(Calendar.MONTH)+1 + " ");
+        displayDate[2] = (time.get(Calendar.DAY_OF_MONTH) < 10 ? "0" : "") + (time.get(Calendar.DAY_OF_MONTH));
         String result = displayDate[0] + displayDate[1] + displayDate[2];
         return result;
     }
@@ -200,6 +223,7 @@ public class TimekeepingMode{
     public String displayWorld(){
         return this.currentWorld;
     }
+
 
 
 }

@@ -6,7 +6,7 @@ import java.util.TimeZone;
 import java.util.*;
 
 
-public class WorldtimeMode implements UI_EX {
+public class WorldtimeMode  {
 
     public WorldtimeMode() {
         this.worldTime = null;
@@ -18,7 +18,8 @@ public class WorldtimeMode implements UI_EX {
                 "Asia/Seoul","Etc/GMT+4", "Europe/London", "Asia/China", "Etc/GMT-2" , "Etc/GMT+8"
         };
         this.currTime = Calendar.getInstance();
-        this.displayWorldTime = new String[7];
+        this.displayWorldTime = new String[3];
+        this.displayWorldDate = new String[3];
     }
 
     public WorldtimeMode(int currIndex){
@@ -38,26 +39,35 @@ public class WorldtimeMode implements UI_EX {
     private String[] world;
     private String [] worldTimezone;
     private String [] displayWorldTime;
+    private String [] displayWorldDate;
     private int currIndex=0;
 
 
-    public int changeIndex() {
+    public void changeIndex() {
         currIndex++;
 
         if(currIndex==5){
             currIndex=0;
         }
-        return currIndex;
     }
 
-    public String[] display(){
-        displayWorldTime[0] = Integer.toString(this.worldTime.get(Calendar.YEAR));
-        displayWorldTime[1] = Integer.toString(this.worldTime.get(Calendar.MONTH));
-        displayWorldTime[2] = Integer.toString(this.worldTime.get(Calendar.DAY_OF_MONTH));
-        displayWorldTime[3] = Integer.toString(this.worldTime.get(Calendar.HOUR_OF_DAY));
-        displayWorldTime[4] = Integer.toString(this.worldTime.get(Calendar.MINUTE));
-        displayWorldTime[5] = Integer.toString(this.worldTime.get(Calendar.SECOND));
-        displayWorldTime[6] = world[currIndex];
-        return displayWorldTime;
+    public String displayTime(){
+        displayWorldTime[0] = Integer.toString(this.worldTime.get(Calendar.HOUR_OF_DAY));
+        displayWorldTime[1] = Integer.toString(this.worldTime.get(Calendar.MINUTE));
+        displayWorldTime[2] = Integer.toString(this.worldTime.get(Calendar.SECOND));
+        String result = displayWorldTime[0] + displayWorldTime[1] + displayWorldTime[2];
+        return result;
+    }
+
+    public String displayDate(){
+        displayWorldDate[0] = Integer.toString(this.worldTime.get(Calendar.YEAR));
+        displayWorldDate[1] = Integer.toString(this.worldTime.get(Calendar.MONTH));
+        displayWorldDate[2] = Integer.toString(this.worldTime.get(Calendar.DAY_OF_MONTH));
+        String result = displayWorldDate[0] + displayWorldDate[1] + displayWorldDate[2];
+        return result;
+    }
+
+    public String displayWorld(){
+        return world[currIndex];
     }
 }

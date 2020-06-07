@@ -2,9 +2,10 @@ package Model;
 import java.util.*;
 
 /**
- * 
+ * ,{"12","ALM","black"},
+ *
  */
-public class SWMode implements UI{
+public class SWMode{
 
     /**
      * Default constructor
@@ -14,19 +15,16 @@ public class SWMode implements UI{
     public static final String RED = "\u001B[31m";
     public static final String RESET = "\u001B[0m";
     /**
-     * 
+     *
      */
-    private String[][] SW= {{"8","STW","black"},{"12","ALM","black"},{"19","TRM","black"},{"25","WLT","black"},{"26","BLC","black"}};
-    private String[][] selectedSW= {{"8","STM"},{"12","ALM"},{"19","Timer"}};
+    private String[][] SW= {{"8","STW","black"},{"19","TRM","black"},{"25","WLT","black"},{"26","BLC","black"}};
+    private String[][] selectedSW= {{"8","STM"},{"25","WLT"},{"19","Timer"}};
     private int currentIndex =0;
 
+    public int getCurrentIndex() {
+        return currentIndex;
+    }
 
-    /**
-     * r
-     */
-    private String ContentIn1;
-    private String ContentIn2;
-    private String ContentInMain;
 
     public void changeSW() {
         currentIndex++;
@@ -40,10 +38,8 @@ public class SWMode implements UI{
                 showIn2section.concat(RED+Integer.toString(i+1)+RESET);
             }
         }
-        // UI show
-        display1("SW");
-        display2(showIn2section);
-        displayMain(Integer.toString(currentIndex+1)+". "+currentSWname);
+
+
 
     }
 
@@ -88,9 +84,7 @@ public class SWMode implements UI{
                 showIn2section.concat(RED+Integer.toString(i+1)+RESET);
             }
         }
-        display1("SW");
-        display2(showIn2section);
-        displayMain(Integer.toString(currentIndex+1)+". "+currentSWname);
+
         return 0;
     }
 
@@ -108,32 +102,8 @@ public class SWMode implements UI{
                 showIn2section.concat(RED+Integer.toString(i+1)+RESET);
             }
         }
-        display1("SW");
-        display2(showIn2section);
-        displayMain(Integer.toString(currentIndex+1)+". "+currentSWname);
-    }
-    /**
-     ** 첫 번쨰 섹션 display
-     */
-    @Override
-    public void display1(String string) {
-        System.out.println(string);
+
     }
 
-    /**
-     ** 두 번쨰 섹션 display
-     */
-    @Override
-    public void display2(String string) {
-        System.out.println(string);
-    }
-
-    /**
-     ** 메인 섹션 display
-     */
-    @Override
-    public void displayMain(String string) {
-        System.out.println(string);
-    }
 
 }

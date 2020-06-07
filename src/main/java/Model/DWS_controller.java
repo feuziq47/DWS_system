@@ -1,11 +1,11 @@
 package Model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class DWS_controller {
-
 
 
     /**
@@ -19,41 +19,116 @@ public class DWS_controller {
         BLC = new BrightcontrolMode();
         SWM = new SWMode();
         TRM = new TimerMode();
-        gui = new GUI();
+        ring = new Ring();
+        gui = new GUI(this);
+
+        currentState = 0;
+        Timer timer = new Timer();
+        long delay = 0;
+        long inteval = 1000;
+        timer.scheduleAtFixedRate(displayTask, delay, inteval);
+
     }
 
-    /**
-     * 
-     */
+    TimerTask displayTask = new TimerTask() {
+
+        public void run() {
+
+            if (ring.isOnOff()) {
+
+            } else {
+                switch (currentState) {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                        gui.setDisplay1(TKM.displayWorld());
+                        gui.setDisplay2(TKM.displayYear());
+                        gui.setDisplay3(TKM.displayMonth());
+                        gui.setDisplay4(TKM.displayDay());
+                        gui.setDisplay5(TKM.displayHour());
+                        gui.setDisplay6(TKM.displayMinute());
+                        gui.setDisplay7(TKM.displaySecond());
+                        break;
+                    case 8:
+                    case 9:
+                    case 10:
+                        gui.setDisplay1("STW");
+                        gui.setDisplay2(TKM.displayTime());
+                        gui.setDisplay3(STM.getStopwatchTime());
+                        break;
+                    case 11:
+                        gui.setDisplay1("STW");
+                        gui.setDisplay2(TKM.displayTime());
+                        gui.setDisplay3(STM.getLapTime());
+                        break;
+                    case 12: // alarm[0]
+                    case 13: // alarm[1]
+                    case 14: // alarm[2]
+                    case 15: // alarm[3]
+                    case 16: // hour
+                    case 17: // minute
+                        gui.setDisplay1("Alarm");
+                        gui.setDisplay2(TKM.displayTime());
+                        gui.setDisplay3(ALM.displayAlarmTime());
+                        break ;
+                    case 19:
+                    case 20:
+                    case 21:
+                    case 22:
+                    case 23:
+                    case 24:
+                        gui.setDisplay1("Timer");
+                        gui.setDisplay2(TKM.displayTime());
+                        gui.setDisplay3(TRM.getTimerTime());
+                        break;
+                    case 25:
+                        gui.setDisplay1(WLT.displayTime());
+                        gui.setDisplay2(WLT.displayDate());
+                        gui.setDisplay3(WLT.displayWorld());
+                        break;
+                    case 26:
+
+                        break;
+                    case 27:
+                        gui.setDisplay1("BC");
+                        gui.setDisplay1(TKM.displayTime());
+                        String on;
+                        if (BLC.getBrightness()) on = "ON";
+                        else on = "OFF";
+                        gui.setDisplay3(on + "   " + Integer.toString(BLC.getBrightLevel()));
+                        break;
+                    case 28:
+                        gui.setDisplay1("SW");
+                        gui.setDisplay2("");
+                        gui.setDisplay3(Integer.toString(SWM.getCurrentIndex() + 1) + ". " + SWM.getSelectedSWState(SWM.getCurrentIndex()));
+                    default:
+                        return;
+                }
+            }
+
+
+        }
+    };
+
     private static int currentState;
 
-    /**
-     * 
-     */
     private static Time[] alarmArray;
 
-    /**
-     * 
-     */
     private static boolean alarmIndicator;
 
-    /**
-     * 
-     */
     private boolean brightness;
 
 
-
-
-    /**
-     * 
-     */
     private Date currentDate;
 
 
-
     /**
-     * 
+     *
      */
     private int button;
 
@@ -68,10 +143,6 @@ public class DWS_controller {
     private GUI gui;
 
 
-
-    /**
-     * @return
-     */
     public int checkState() {
         // TODO implement here
         return 0;
@@ -119,7 +190,7 @@ public class DWS_controller {
      * @param button
      */
     public void reqChangeValue(int button) {
-        switch(currentState){
+        switch (currentState) {
             case 2:
             case 3:
             case 4:
@@ -131,12 +202,12 @@ public class DWS_controller {
             case 20:
             case 21:
             case 22:
-                TRM.changeValue(currentState,button);
+                TRM.changeValue(currentState, button);
                 break;
             case 16:
             case 17:
             case 18:
-                ALM.changeValue(currentState);
+                //ALM.changeValue(currentState);
                 break;
             default:
                 return;
@@ -147,65 +218,66 @@ public class DWS_controller {
      * @return
      */
     public void reqChangeMode() {
-        int firstSWidx=Integer.parseInt(SWM.getSelectedSWState(0));
-        int secondSWidx=Integer.parseInt(SWM.getSelectedSWState(1));
-        int thirdSWidx=Integer.parseInt(SWM.getSelectedSWState(2));
+        int firstSWidx = Integer.parseInt(SWM.getSelectedSWState(0));
+        int secondSWidx = Integer.parseInt(SWM.getSelectedSWState(1));
+        int thirdSWidx = Integer.parseInt(SWM.getSelectedSWState(2));
         if (currentState == 0) {
             currentState = firstSWidx;
-        }else if(currentState==firstSWidx){
+        } else if (currentState == firstSWidx) {
             currentState = secondSWidx;
-        }else if(currentState==secondSWidx){
+        } else if (currentState == secondSWidx) {
             currentState = thirdSWidx;
-        }else if(currentState==thirdSWidx){
+        } else if (currentState == thirdSWidx) {
             currentState = 0;
-        }else{
+        } else {
             return;
         }
 
     }
 
     /**
-     * 
+     *
      */
     public void reqStopRinging() {
         ring.setOnOff(false);
     }
 
     /**
-     * 
+     *
      */
     public void reqStartStopwatch() {
         STM.startStopwatch();
     }
 
     /**
-     * 
+     *
      */
     public void reqStopStopwatch() {
         STM.stopStopwatch();
     }
 
     /**
-     * 
+     *
      */
     public void reqResetStopwatch() {
         STM.resetStopwatch();
     }
 
     /**
-     * 
+     *
      */
     public void reqLapStopwatch() {
         STM.lapTime();
     }
 
     /**
-     * 
+     *
      */
+    /*
     public void reqSelectAlarmNum() {
         ALM.getAlarmTime(ALM.getAlarmIndex());
     }
-
+        */
     /**
      * @param currentState
      */
@@ -216,60 +288,61 @@ public class DWS_controller {
     /**
      * @param button
      */
+    /*
     public void reqSetAlarmTime(int button) {
-        switch(currentState){
+        switch (currentState) {
             case 12:
-                if(button ==0){
+                if (button == 0) {
                     ALM.getAlarmTime(0);
-                }else{
+                } else {
                     return;
                 }
                 break;
             case 13:
-                if(button ==0){
+                if (button == 0) {
                     ALM.getAlarmTime(1);
-                }else{
+                } else {
                     return;
                 }
                 break;
             case 14:
-                if(button ==0){
+                if (button == 0) {
                     ALM.getAlarmTime(2);
-                }else{
+                } else {
                     return;
                 }
                 break;
             case 15:
-                if(button ==0){
+                if (button == 0) {
                     ALM.getAlarmTime(3);
-                }else {
+                } else {
                     return;
                 }
                 break;
             case 16:
-                if(button==0){
+                if (button == 0) {
                     ALM.enterSetSection(16);
-                }else{
+                } else {
                     return;
                 }
                 break;
             case 17:
-                if(button==0){
+                if (button == 0) {
                     ALM.enterSetSection(17);
-                }else{
+                } else {
                     return;
                 }
                 break;
             case 18:
-                if(button==0){
+                if (button == 0) {
                     ALM.enterSetSection(18);
-                }else{
+                } else {
                     return;
                 }
                 break;
         }
     }
-
+    */
     /**
      * @param button
      */
@@ -278,49 +351,49 @@ public class DWS_controller {
     }
 
     /**
-     * 
+     *
      */
     public void reqStartTimer() {
         TRM.startTimer();
     }
 
     /**
-     * 
+     *
      */
     public void reqStopTimer() {
         TRM.stopTimer();
     }
 
     /**
-     * 
+     *
      */
     public void reqResetTimer() {
         TRM.resetTimer();
     }
 
     /**
-     * 
+     *
      */
     public void reqChangeWorld() {
         WLT.changeIndex();
     }
 
     /**
-     * 
+     *
      */
     public void reqTurnOnBC() {
         BLC.checkBC();
     }
 
     /**
-     * 
+     *
      */
     public void reqTurnOffBC() {
         BLC.checkBC();
     }
 
     /**
-     * 
+     *
      */
     public void reqControlBC() {
         BLC.changeBClevel();
@@ -338,10 +411,10 @@ public class DWS_controller {
      */
     public void pressButton(int button) {
         // TODO implement here
-        if(ring.isOnOff()){
+        if (ring.isOnOff()) {
             reqStopRinging();
-        }else{
-            switch(currentState){
+        } else {
+            switch (currentState) {
                 case 0:
                     if (button == 0)
                         reqSetTime(0);
@@ -404,6 +477,7 @@ public class DWS_controller {
                         return;
                     }
                     break;
+                    /*
                 case 12:
                 case 13:
                 case 14:
@@ -412,7 +486,7 @@ public class DWS_controller {
                         reqSetAlarmTime(button);
                     } else if (button == 1) {
                         reqSelectAlarmNum();
-                    } else if (button ==2){
+                    } else if (button == 2) {
                         reqChangeMode();
                     } else if (button == 3) {
                         reqRemoveAlarmNum(currentState);
@@ -429,11 +503,12 @@ public class DWS_controller {
                         reqChangeValue(button);
                     } else if (button == 2) {
                         int alarmIndex = ALM.getAlarmIndex();
-                        currentState =12+alarmIndex;
+                        currentState = 12 + alarmIndex;
                     } else {
                         return;
                     }
                     break;
+                    */
                 case 19:
                     if (button == 0)
                         reqSetTimerTime(button);
@@ -463,38 +538,37 @@ public class DWS_controller {
                         reqResetTimer();
                     break;
                 case 25:
-                    if(button == 1){
+                    if (button == 1) {
                         reqChangeWorld();
-                    }else if(button == 2){
+                    } else if (button == 2) {
                         reqChangeMode();
-                    }
-                    else{
+                    } else {
                         return;
                     }
                     break;
                 case 26:
-                    if(button == 1){
+                    if (button == 1) {
                         reqControlBC();
-                    }else if (button ==2){
+                    } else if (button == 2) {
                         reqChangeMode();
-                    }else if(button == 3){
-                        if(BLC.getBrightness()){
+                    } else if (button == 3) {
+                        if (BLC.getBrightness()) {
                             reqTurnOffBC();
-                        }else{
+                        } else {
                             reqTurnOnBC();
                         }
-                    }else{
+                    } else {
                         return;
                     }
                     break;
                 case 27:
                     break;
                 case 28:
-                    if(button == 0 || button==1){
+                    if (button == 0 || button == 1) {
                         reqChangeSW(button);
-                    }else if(button == 3){
-                        currentState=0;
-                    }else{
+                    } else if (button == 3) {
+                        currentState = 0;
+                    } else {
                         return;
                     }
                     break;
@@ -506,21 +580,21 @@ public class DWS_controller {
     }
 
     /**
-     * 
+     *
      */
     public void turnOnAlarmIndicator() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void turnOffAlarmIndicator() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void checkCurrentTime() {
         // TODO implement here

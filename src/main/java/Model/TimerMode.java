@@ -16,13 +16,13 @@ public class TimerMode{
     }
 
 
-    Timer timer = new Timer();
+    Timer timer ;
 
 
     private boolean onOff=false;
 
     private Time timerTime;
-    Thread stopwatchThread=null;
+
 
 
 
@@ -81,15 +81,14 @@ public class TimerMode{
 
     public Time startTimer() {
         onOff=true;
-
-        timer.scheduleAtFixedRate(timerTask,0,1000);
-
+        timer = new Timer();
+        tempTask();
         return null;
     }
 
     public Time stopTimer() {
         onOff=false;
-        timerTask.cancel();
+        timer = null;
         return null;
     }
 
@@ -100,29 +99,37 @@ public class TimerMode{
         timerTime.setM_second(0);
     }
 
-    TimerTask timerTask = new TimerTask() {
-        @Override
-        public void run() {
-            while(onOff){
-                int sec=timerTime.getSecond();
-                int min=timerTime.getMinute();
-                int hour= timerTime.getHour();
-                if(sec>0){
-                    timerTime.setSecond(--sec);
-                }else if(sec==0){
-                    // sec 값이 0이라면 sec=59
-                    timerTime.setSecond(59);
-                    if(min>0){
-                        // minute-1
-                        timerTime.setMinute(--min);
-                    }else if(min==0){
-                        // minute 값이 0이라면 minute=59, hour--
-                        timerTime.setMinute(59);
-                        timerTime.setHour(--hour);
+    public void tempTask(){
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                while(onOff){
+                    int sec=timerTime.getSecond();
+                    int min=timerTime.getMinute();
+                    int hour= timerTime.getHour();
+                    if(sec>0){
+                        timerTime.setSecond(--sec);
+                    }else if(sec==0){
+                        // sec 값이 0이라면 sec=59
+                        timerTime.setSecond(59);
+                        if(min>0){
+                            // minute-1
+                            timerTime.setMinute(--min);
+                        }else if(min==0){
+                            // minute 값이 0이라면 minute=59, hour--
+                            timerTime.setMinute(59);
+                            timerTime.setHour(--hour);
+                        }
                     }
                 }
             }
-        }
-    };
+        };
+        timer.scheduleAtFixedRate(timerTask,0,1000);
+    }
+
+
+    public String getTimerTime(){
+        return this.timerTime.getHour() + " : " +  this.timerTime.getMinute() + " : " + this.timerTime.getSecond();
+    }
 
 }

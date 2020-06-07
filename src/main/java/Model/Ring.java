@@ -10,6 +10,7 @@ public class Ring {
      * Default constructor
      */
     public Ring() {
+        this.onOff = false;
     }
 
     public boolean isOnOff() {

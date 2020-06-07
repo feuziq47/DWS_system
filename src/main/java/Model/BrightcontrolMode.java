@@ -19,6 +19,10 @@ public class BrightcontrolMode {
      */
     private boolean brightness = false;
 
+    public int getBrightLevel() {
+        return brightLevel;
+    }
+
     /**
      *  밝기 level
      */
