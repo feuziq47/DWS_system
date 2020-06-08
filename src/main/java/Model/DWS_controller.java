@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class DWS_controller {
 
-
+    Thread ringThread;
     /**
      * Default constructor
      */
@@ -15,17 +15,17 @@ public class DWS_controller {
         TKM = new TimekeepingMode();
         STM = new StopwatchMode();
         ALM = new AlarmMode();
-        WLT = new WorldtimeMode();
+        WLT = new WorldtimeMode(0);
         BLC = new BrightcontrolMode();
         SWM = new SWMode();
-        TRM = new TimerMode();
+        TRM = new TimerMode(ring);
         ring = new Ring();
         gui = new GUI(this);
 
         currentState = 0;
         Timer timer = new Timer();
         long delay = 0;
-        long inteval = 1000;
+        long inteval = 10;
         timer.scheduleAtFixedRate(displayTask, delay, inteval);
 
     }
@@ -34,37 +34,134 @@ public class DWS_controller {
 
         public void run() {
 
-            if (ring.isOnOff()) {
-
+            if(ringThread != null && ring.isOnOff()){
+                ringThread.interrupt();
+            }
+            if(ring.checkAlarm(TKM.getCurrentTime()) || ring.checkTimer(TKM.getCurrentTime())){
+                Ring newRing = new Ring();
+                ringThread = new Thread(newRing);
+                ringThread.start();
             } else {
                 switch (currentState) {
                     case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
+                        gui.setBlack(gui.getTextField(1));
+                        gui.setBlack(gui.getTextField(2));
+                        gui.setBlack(gui.getTextField(3));
+                        gui.setBlack(gui.getTextField(4));
+                        gui.setBlack(gui.getTextField(5));
                         gui.setDisplay1(TKM.displayWorld());
                         gui.setDisplay2(TKM.displayYear());
                         gui.setDisplay3(TKM.displayMonth());
                         gui.setDisplay4(TKM.displayDay());
-                        gui.setDisplay5(TKM.displayHour());
-                        gui.setDisplay6(TKM.displayMinute());
-                        gui.setDisplay7(TKM.displaySecond());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(TKM.displayHour());
+                        gui.setDisplay7(TKM.displayMinute());
+                        gui.setDisplay8(TKM.displaySecond());
+                        break;
+                    case 1:
+                        gui.setRed(gui.getTextField(1));
+                        gui.setDisplay1(TKM.displayWorld());
+                        gui.setDisplay2(TKM.displayYear());
+                        gui.setDisplay3(TKM.displayMonth());
+                        gui.setDisplay4(TKM.displayDay());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(TKM.displayHour());
+                        gui.setDisplay7(TKM.displayMinute());
+                        gui.setDisplay8(TKM.displaySecond());
+                        break;
+                    case 2:
+                        gui.setBlack(gui.getTextField(1));
+                        gui.setRed(gui.getTextField(2));
+                        gui.setDisplay1(TKM.displayWorld());
+                        gui.setDisplay2(TKM.displayYear());
+                        gui.setDisplay3(TKM.displayMonth());
+                        gui.setDisplay4(TKM.displayDay());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(TKM.displayHour());
+                        gui.setDisplay7(TKM.displayMinute());
+                        gui.setDisplay8(TKM.displaySecond());
+                        break;
+                    case 3:
+                        gui.setBlack(gui.getTextField(2));
+                        gui.setRed(gui.getTextField(3));
+                        gui.setDisplay1(TKM.displayWorld());
+                        gui.setDisplay2(TKM.displayYear());
+                        gui.setDisplay3(TKM.displayMonth());
+                        gui.setDisplay4(TKM.displayDay());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(TKM.displayHour());
+                        gui.setDisplay7(TKM.displayMinute());
+                        gui.setDisplay8(TKM.displaySecond());
+                        break;
+                    case 4:
+                        gui.setBlack(gui.getTextField(3));
+                        gui.setRed(gui.getTextField(4));
+                        gui.setDisplay1(TKM.displayWorld());
+                        gui.setDisplay2(TKM.displayYear());
+                        gui.setDisplay3(TKM.displayMonth());
+                        gui.setDisplay4(TKM.displayDay());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(TKM.displayHour());
+                        gui.setDisplay7(TKM.displayMinute());
+                        gui.setDisplay8(TKM.displaySecond());
+                        break;
+                    case 5:
+                        gui.setBlack(gui.getTextField(4));
+                        gui.setRed(gui.getTextField(6));
+                        gui.setDisplay1(TKM.displayWorld());
+                        gui.setDisplay2(TKM.displayYear());
+                        gui.setDisplay3(TKM.displayMonth());
+                        gui.setDisplay4(TKM.displayDay());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(TKM.displayHour());
+                        gui.setDisplay7(TKM.displayMinute());
+                        gui.setDisplay8(TKM.displaySecond());
+                        break;
+                    case 6:
+                        gui.setBlack(gui.getTextField(6));
+                        gui.setRed(gui.getTextField(7));
+                        gui.setDisplay1(TKM.displayWorld());
+                        gui.setDisplay2(TKM.displayYear());
+                        gui.setDisplay3(TKM.displayMonth());
+                        gui.setDisplay4(TKM.displayDay());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(TKM.displayHour());
+                        gui.setDisplay7(TKM.displayMinute());
+                        gui.setDisplay8(TKM.displaySecond());
+                        break;
+                    case 7:
+                        gui.setBlack(gui.getTextField(7));
+                        gui.setRed(gui.getTextField(8));
+                        gui.setDisplay1(TKM.displayWorld());
+                        gui.setDisplay2(TKM.displayYear());
+                        gui.setDisplay3(TKM.displayMonth());
+                        gui.setDisplay4(TKM.displayDay());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(TKM.displayHour());
+                        gui.setDisplay7(TKM.displayMinute());
+                        gui.setDisplay8(TKM.displaySecond());
                         break;
                     case 8:
                     case 9:
                     case 10:
                         gui.setDisplay1("STW");
-                        gui.setDisplay2(TKM.displayTime());
-                        gui.setDisplay3(STM.getStopwatchTime());
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setDisplay4(TKM.displaySecond());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(Integer.toString(STM.getStopwatchTime().getMinute()));
+                        gui.setDisplay7(Integer.toString(STM.getStopwatchTime().getSecond()));
+                        gui.setDisplay8(Integer.toString(STM.getStopwatchTime().getM_second()));
                         break;
                     case 11:
                         gui.setDisplay1("STW");
-                        gui.setDisplay2(TKM.displayTime());
-                        gui.setDisplay3(STM.getLapTime());
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setDisplay4(TKM.displaySecond());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(Integer.toString(STM.getLapTime().getMinute()));
+                        gui.setDisplay7(Integer.toString(STM.getLapTime().getSecond()));
+                        gui.setDisplay8(Integer.toString(STM.getLapTime().getM_second()));
                         break;
                     case 12: // alarm[0]
                     case 13: // alarm[1]
@@ -72,40 +169,104 @@ public class DWS_controller {
                     case 15: // alarm[3]
                     case 16: // hour
                     case 17: // minute
-                        gui.setDisplay1("Alarm");
-                        gui.setDisplay2(TKM.displayTime());
-                        gui.setDisplay3(ALM.displayAlarmTime());
+                        gui.setDisplay1("ALM");
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setDisplay4(TKM.displaySecond());
+                        int idx=ALM.getAlarmIndex();
+                        gui.setDisplay6(Integer.toString(idx+1));
+                        gui.setDisplay7(Integer.toString(ALM.getAlarmTime(idx).getHour()));
+                        gui.setDisplay8(Integer.toString(ALM.getAlarmTime(idx).getMinute()));
                         break ;
                     case 19:
-                    case 20:
-                    case 21:
-                    case 22:
                     case 23:
                     case 24:
+                        gui.setBlack(gui.getTextField(6));
+                        gui.setBlack(gui.getTextField(7));
+                        gui.setBlack(gui.getTextField(8));
                         gui.setDisplay1("Timer");
-                        gui.setDisplay2(TKM.displayTime());
-                        gui.setDisplay3(TRM.getTimerTime());
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setDisplay4(TKM.displaySecond());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(Integer.toString(TRM.getTimerTime().getHour()));
+                        gui.setDisplay7(Integer.toString(TRM.getTimerTime().getMinute()));
+                        gui.setDisplay8(Integer.toString(TRM.getTimerTime().getSecond()));
+                        break;
+                    case 20:
+                        gui.setRed(gui.getTextField(6));
+                        gui.setDisplay1("Timer");
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setDisplay4(TKM.displaySecond());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(Integer.toString(TRM.getTimerTime().getHour()));
+                        gui.setDisplay7(Integer.toString(TRM.getTimerTime().getMinute()));
+                        gui.setDisplay8(Integer.toString(TRM.getTimerTime().getSecond()));
+                        break;
+                    case 21:
+                        gui.setBlack(gui.getTextField(6));
+                        gui.setRed(gui.getTextField(7));
+                        gui.setDisplay1("Timer");
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setDisplay4(TKM.displaySecond());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(Integer.toString(TRM.getTimerTime().getHour()));
+                        gui.setDisplay7(Integer.toString(TRM.getTimerTime().getMinute()));
+                        gui.setDisplay8(Integer.toString(TRM.getTimerTime().getSecond()));
+                        break;
+                    case 22:
+                        gui.setBlack(gui.getTextField(7));
+                        gui.setRed(gui.getTextField(8));
+                        gui.setDisplay1("Timer");
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setDisplay4(TKM.displaySecond());
+                        gui.setDisplay5(" ");
+                        gui.setDisplay6(Integer.toString(TRM.getTimerTime().getHour()));
+                        gui.setDisplay7(Integer.toString(TRM.getTimerTime().getMinute()));
+                        gui.setDisplay8(Integer.toString(TRM.getTimerTime().getSecond()));
                         break;
                     case 25:
-                        gui.setDisplay1(WLT.displayTime());
-                        gui.setDisplay2(WLT.displayDate());
-                        gui.setDisplay3(WLT.displayWorld());
+                        gui.setDisplay1(WLT.displayWorld());
+                        gui.setDisplay2(WLT.displayYear());
+                        gui.setDisplay3(WLT.displayMonth());
+                        gui.setDisplay4(WLT.displayDay());
+                        gui.setDisplay6(WLT.displayHour());
+                        gui.setDisplay7(WLT.displayMinute());
+                        gui.setDisplay8(WLT.displaySecond());
                         break;
                     case 26:
-
-                        break;
                     case 27:
                         gui.setDisplay1("BC");
-                        gui.setDisplay1(TKM.displayTime());
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setDisplay4(TKM.displaySecond());
                         String on;
                         if (BLC.getBrightness()) on = "ON";
                         else on = "OFF";
-                        gui.setDisplay3(on + "   " + Integer.toString(BLC.getBrightLevel()));
+                        gui.setDisplay6(on);
+                        gui.setDisplay7(" ");
+                        gui.setDisplay8(Integer.toString(BLC.getBrightLevel()));
                         break;
                     case 28:
-                        gui.setDisplay1("SW");
-                        gui.setDisplay2("");
-                        gui.setDisplay3(Integer.toString(SWM.getCurrentIndex() + 1) + ". " + SWM.getSelectedSWState(SWM.getCurrentIndex()));
+                        String showIn2section="";
+                        for(int i=0; i<5; i++){
+                            if(SWM.getSW()[i][2].equals("black")){
+                                gui.setBlack(gui.getTextField(i+1));
+                            }else if(SWM.getSW()[i][2].equals("red")){
+                                gui.setRed(gui.getTextField(i+1));
+                            }
+                        }
+                        gui.setDisplay1("1");
+                        gui.setDisplay2("2");
+                        gui.setDisplay3("3");
+                        gui.setDisplay4("4");
+                        gui.setDisplay5("5");
+                        gui.setDisplay6(Integer.toString(SWM.getCurrentIndex() + 1));
+                        gui.setDisplay7(" ");
+                        gui.setDisplay8(SWM.getSW()[SWM.getCurrentIndex()][1]);
                     default:
                         return;
                 }
@@ -218,9 +379,9 @@ public class DWS_controller {
      * @return
      */
     public void reqChangeMode() {
-        int firstSWidx = Integer.parseInt(SWM.getSelectedSWState(0));
-        int secondSWidx = Integer.parseInt(SWM.getSelectedSWState(1));
-        int thirdSWidx = Integer.parseInt(SWM.getSelectedSWState(2));
+        int firstSWidx = Integer.parseInt(SWM.getSelectedSWIdx(0));
+        int secondSWidx = Integer.parseInt(SWM.getSelectedSWIdx(1));
+        int thirdSWidx = Integer.parseInt(SWM.getSelectedSWIdx(2));
         if (currentState == 0) {
             currentState = firstSWidx;
         } else if (currentState == firstSWidx) {
@@ -246,6 +407,7 @@ public class DWS_controller {
      *
      */
     public void reqStartStopwatch() {
+        currentState=9;
         STM.startStopwatch();
     }
 
@@ -253,6 +415,7 @@ public class DWS_controller {
      *
      */
     public void reqStopStopwatch() {
+        currentState=10;
         STM.stopStopwatch();
     }
 
@@ -260,6 +423,7 @@ public class DWS_controller {
      *
      */
     public void reqResetStopwatch() {
+        currentState=8;
         STM.resetStopwatch();
     }
 
@@ -267,6 +431,7 @@ public class DWS_controller {
      *
      */
     public void reqLapStopwatch() {
+        currentState=11;
         STM.lapTime();
     }
 
@@ -288,33 +453,15 @@ public class DWS_controller {
     /**
      * @param button
      */
-    /*
+
     public void reqSetAlarmTime(int button) {
         switch (currentState) {
             case 12:
-                if (button == 0) {
-                    ALM.getAlarmTime(0);
-                } else {
-                    return;
-                }
-                break;
             case 13:
-                if (button == 0) {
-                    ALM.getAlarmTime(1);
-                } else {
-                    return;
-                }
-                break;
             case 14:
-                if (button == 0) {
-                    ALM.getAlarmTime(2);
-                } else {
-                    return;
-                }
-                break;
             case 15:
                 if (button == 0) {
-                    ALM.getAlarmTime(3);
+                    ALM.getAlarmTime(currentState);
                 } else {
                     return;
                 }
@@ -333,27 +480,26 @@ public class DWS_controller {
                     return;
                 }
                 break;
-            case 18:
-                if (button == 0) {
-                    ALM.enterSetSection(18);
-                } else {
-                    return;
-                }
+            default:
                 break;
         }
     }
-    */
+
     /**
      * @param button
      */
     public void reqSetTimerTime(int button) {
+
         currentState = TRM.enterSetSection(currentState);
+
+
     }
 
     /**
      *
      */
     public void reqStartTimer() {
+        currentState=23;
         TRM.startTimer();
     }
 
@@ -361,6 +507,7 @@ public class DWS_controller {
      *
      */
     public void reqStopTimer() {
+        currentState=24;
         TRM.stopTimer();
     }
 
@@ -368,6 +515,7 @@ public class DWS_controller {
      *
      */
     public void reqResetTimer() {
+        currentState=19;
         TRM.resetTimer();
     }
 
@@ -403,6 +551,7 @@ public class DWS_controller {
      * @param button
      */
     public void reqChangeSW(int button) {
+        currentState = 28;
         SWM.enterChangeSW(button);
     }
 
@@ -445,8 +594,10 @@ public class DWS_controller {
 
                 case 8:
                     if (button == 1) {
+                        currentState=9;
                         reqStartStopwatch();
                     } else if (button == 2) {
+
                         reqChangeMode();
                     } else {
                         return;
@@ -477,7 +628,6 @@ public class DWS_controller {
                         return;
                     }
                     break;
-                    /*
                 case 12:
                 case 13:
                 case 14:
@@ -503,12 +653,12 @@ public class DWS_controller {
                         reqChangeValue(button);
                     } else if (button == 2) {
                         int alarmIndex = ALM.getAlarmIndex();
-                        currentState = 12 + alarmIndex;
+                        currentState = alarmIndex;
                     } else {
                         return;
                     }
                     break;
-                    */
+
                 case 19:
                     if (button == 0)
                         reqSetTimerTime(button);
@@ -577,6 +727,14 @@ public class DWS_controller {
             }
         }
 
+    }
+
+    private void reqSelectAlarmNum() {
+        if(currentState==15){
+            currentState=12;
+        }else{
+            currentState++;
+        }
     }
 
     /**

@@ -7,7 +7,8 @@ public class TimerMode{
     /**
      * Default constructor
      */
-    public TimerMode() {
+    public TimerMode(Ring r) {
+        ring = r;
         timerTime = new Time();
         timerTime.setHour(0);
         timerTime.setMinute(0);
@@ -21,7 +22,10 @@ public class TimerMode{
 
     private boolean onOff=false;
 
+
+
     private Time timerTime;
+    private Ring ring;
 
 
 
@@ -30,13 +34,13 @@ public class TimerMode{
     public int enterSetSection(int currentState) {
         switch (currentState){
             case 19:
-                return 19;
-            case 20:
                 return 20;
-            case 21:
+            case 20:
                 return 21;
-            case 22:
+            case 21:
                 return 22;
+            case 22:
+                return 19;
             default:
                 break;
         }
@@ -45,6 +49,7 @@ public class TimerMode{
 
 
     public void changeValue(int currentState, int button) {
+        System.out.println(currentState);
         switch(currentState){
             case 20:
                 if(button ==1){
@@ -103,10 +108,18 @@ public class TimerMode{
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                while(onOff){
+                if(onOff==true){
                     int sec=timerTime.getSecond();
                     int min=timerTime.getMinute();
                     int hour= timerTime.getHour();
+                    if(sec ==0&&min==0&&hour==0){
+                        onOff = false;
+                        ring.setOnOff(true);
+                        timerTime.setHour(0);
+                        timerTime.setMinute(0);
+                        timerTime.setSecond(0);
+                        timerTime.setM_second(0);
+                    }
                     if(sec>0){
                         timerTime.setSecond(--sec);
                     }else if(sec==0){
@@ -119,6 +132,7 @@ public class TimerMode{
                             // minute 값이 0이라면 minute=59, hour--
                             timerTime.setMinute(59);
                             timerTime.setHour(--hour);
+
                         }
                     }
                 }
@@ -128,8 +142,10 @@ public class TimerMode{
     }
 
 
-    public String getTimerTime(){
-        return this.timerTime.getHour() + " : " +  this.timerTime.getMinute() + " : " + this.timerTime.getSecond();
+    public Time getTimerTime(){
+        return timerTime;
     }
-
+    public boolean isOnOff() {
+        return onOff;
+    }
 }

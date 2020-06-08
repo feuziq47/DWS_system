@@ -8,7 +8,7 @@ import java.util.Timer;
 public class StopwatchMode {
 
     private Time stopwatchTime;
-    private String lapTime;
+    private Time lapTime;
     private boolean OnOff;
 
     Timer timer;
@@ -18,6 +18,7 @@ public class StopwatchMode {
     public StopwatchMode() {
         this.OnOff = false;
         stopwatchTime = new Time();
+        lapTime = new Time();
         stopwatchTime.setHour(0);
         stopwatchTime.setMinute(0);
         stopwatchTime.setSecond(0);
@@ -86,15 +87,15 @@ public class StopwatchMode {
      * @return
      */
     public void lapTime() {
-        this.lapTime = this.stopwatchTime.getMinute() + " : " +  this.stopwatchTime.getSecond() + " : " + this.stopwatchTime.getM_second();
+        this.lapTime = stopwatchTime;
         System.out.println(lapTime);
     }
 
-    public String getLapTime(){
+    public Time getLapTime(){
         return this.lapTime;
     }
 
-    public String getStopwatchTime(){
-        return this.stopwatchTime.getMinute() + " : " +  this.stopwatchTime.getSecond() + " : " + this.stopwatchTime.getM_second();
+    public Time getStopwatchTime(){
+        return stopwatchTime;
     }
 }

@@ -1,16 +1,26 @@
 package Model;
+import java.awt.*;
 import java.util.*;
 
 /**
  * 
  */
-public class Ring {
+public class Ring implements Runnable{
 
     /**
      * Default constructor
      */
-    public Ring() {
+    AlarmMode ALM;
+    TimerMode TMR;
+    Toolkit toolkit = Toolkit.getDefaultToolkit();
+    public Ring(){
+        onOff=true;
+    }
+
+    public Ring(AlarmMode alarmMode, TimerMode timerMode) {
         this.onOff = false;
+        ALM=alarmMode;
+        TMR=timerMode;
     }
 
     public boolean isOnOff() {
@@ -32,17 +42,30 @@ public class Ring {
     /**
      * @return
      */
-    public boolean checkAlarm() {
-        // TODO implement here
+    public boolean checkAlarm(Time currTime) {
+        if(ALM.isAlarmIndicator()){
+            for(int i=0; i<4;i++){
+                if(ALM.getAlarmTime(i).getHour()==currTime.getHour() && ALM.getAlarmTime(i).getMinute()==currTime.getMinute()){
+                    onOff = true;
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     /**
      * @return
      */
-    public boolean checkTimer() {
-        // TODO implement here
-
+    public boolean checkTimer(Time currTime) {
+        if(TMR.isOnOff()){
+            for(int i=0; i<4;i++){
+                if(TMR.getTimerTime().getHour()==currTime.getHour() && TMR.getTimerTime().getMinute()==currTime.getMinute()){
+                    onOff = true;
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -50,8 +73,15 @@ public class Ring {
      * 
      */
     public void ringing() {
-        // TODO implement here
-
+        for(int i=0; i<3; i++){
+            toolkit.beep();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        onOff=false;
     }
 
     /**
@@ -61,4 +91,8 @@ public class Ring {
         // TODO implement here
     }
 
+    @Override
+    public void run() {
+        ringing();
+    }
 }

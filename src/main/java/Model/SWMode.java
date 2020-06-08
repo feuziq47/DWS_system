@@ -2,7 +2,7 @@ package Model;
 import java.util.*;
 
 /**
- * ,{"12","ALM","black"},
+ *
  *
  */
 public class SWMode{
@@ -14,33 +14,28 @@ public class SWMode{
     }
     public static final String RED = "\u001B[31m";
     public static final String RESET = "\u001B[0m";
+
+
+
     /**
      *
      */
-    private String[][] SW= {{"8","STW","black"},{"19","TRM","black"},{"25","WLT","black"},{"26","BLC","black"}};
+    private String[][] SW= {{"8","STM","red"},{"12","ALM","black"},{"19","TRM","red"},{"25","WLT","red"},{"26","BLC","black"}};
     private String[][] selectedSW= {{"8","STM"},{"25","WLT"},{"19","Timer"}};
     private int currentIndex =0;
 
     public int getCurrentIndex() {
         return currentIndex;
     }
-
+    public String[][] getSW() {
+        return SW;
+    }
 
     public void changeSW() {
         currentIndex++;
-        String currentSWname = SW[currentIndex][1];
-        // display2를 위한 string 생성
-        String showIn2section="";
-        for(int i=0; i<5; i++){
-            if(SW[i][3].equals("black")){
-                showIn2section.concat(Integer.toString(i+1));
-            }else if(SW[i][3].equals("red")){
-                showIn2section.concat(RED+Integer.toString(i+1)+RESET);
-            }
+        if(currentIndex == 5){
+            currentIndex = 0;
         }
-
-
-
     }
 
     /**
@@ -74,36 +69,15 @@ public class SWMode{
                 SW[i][2]="red";
             }
         }
-        // UI show
-        // display2를 위한 string 생성
-        String showIn2section="";
-        for(int i=0; i<5; i++){
-            if(SW[i][3].equals("black")){
-                showIn2section.concat(Integer.toString(i+1));
-            }else if(SW[i][3].equals("red")){
-                showIn2section.concat(RED+Integer.toString(i+1)+RESET);
-            }
-        }
 
         return 0;
     }
 
     public String getSelectedSWState(int idx){
+        return selectedSW[idx][1];
+    }
+    public String getSelectedSWIdx(int idx){
         return selectedSW[idx][0];
     }
-    public void showDefault(){
-        String currentSWname = SW[currentIndex][1];
-        // display2를 위한 string 생성
-        String showIn2section="";
-        for(int i=0; i<5; i++){
-            if(SW[i][3].equals("black")){
-                showIn2section.concat(Integer.toString(i+1));
-            }else if(SW[i][3].equals("red")){
-                showIn2section.concat(RED+Integer.toString(i+1)+RESET);
-            }
-        }
-
-    }
-
 
 }
