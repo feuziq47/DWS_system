@@ -15,6 +15,13 @@ public class TimerMode{
         timerTime.setSecond(0);
         timerTime.setM_second(0);
     }
+    public TimerMode(){
+        timerTime = new Time();
+        timerTime.setHour(0);
+        timerTime.setMinute(0);
+        timerTime.setSecond(0);
+        timerTime.setM_second(0);
+    }
 
 
     Timer timer ;
@@ -22,13 +29,8 @@ public class TimerMode{
 
     private boolean onOff=false;
 
-
-
     private Time timerTime;
     private Ring ring;
-
-
-
 
 
     public int enterSetSection(int currentState) {
@@ -49,7 +51,6 @@ public class TimerMode{
 
 
     public void changeValue(int currentState, int button) {
-        System.out.println(currentState);
         switch(currentState){
             case 20:
                 if(button ==1){
@@ -88,7 +89,7 @@ public class TimerMode{
         onOff=true;
         timer = new Timer();
         tempTask();
-        return null;
+        return timerTime;
     }
 
     public Time stopTimer() {
@@ -114,13 +115,13 @@ public class TimerMode{
                     int hour= timerTime.getHour();
                     if(sec ==0&&min==0&&hour==0){
                         onOff = false;
-                        ring.setOnOff(true);
+                        //ring.setOnOff(true);
                         timerTime.setHour(0);
                         timerTime.setMinute(0);
                         timerTime.setSecond(0);
                         timerTime.setM_second(0);
                     }
-                    if(sec>0){
+                    else if(sec>0){
                         timerTime.setSecond(--sec);
                     }else if(sec==0){
                         // sec 값이 0이라면 sec=59
@@ -145,6 +146,30 @@ public class TimerMode{
     public Time getTimerTime(){
         return timerTime;
     }
+
+    public void setTimerTime(int hour, int min, int sec){
+        this.timerTime.setHour(hour);
+        this.timerTime.setMinute(min);
+        this.timerTime.setSecond(sec);
+    }
+
+    public void setValue(int currentState, int value){
+        switch(currentState){
+            case 20:
+                timerTime.setHour(value);
+                break;
+            case 21:
+                timerTime.setMinute(value);
+                break;
+            case 22:
+                timerTime.setSecond(value);
+                break;
+            default:
+                return;
+        }
+
+    }
+
     public boolean isOnOff() {
         return onOff;
     }

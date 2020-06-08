@@ -2,9 +2,6 @@ package Model;
 
 import java.util.*;
 
-/**
- *  Time 구조체
- */
 public class Time {
 
     /**

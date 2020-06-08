@@ -2,9 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="757b6c67-7236-4c33-b8c5-721561bd4ddf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/Model/DWS_controller$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/Model/StopwatchMode$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/Model/WorldtimeMode$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/Model/AlarmModeTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/Model/BrightcontrolModeTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/Model/SWModeTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/Model/StopwatchModeTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/Model/TimekeepingModeTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/Model/TimerModeTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/Model/WorldtimeModeTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/AlarmModeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/BrightcontrolModeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/SWModeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/StopwatchModeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/TimekeepingModeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/TimerModeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Model/WorldtimeModeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/AlarmMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/AlarmMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BrightcontrolMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BrightcontrolMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/DWS_controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/DWS_controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/GUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/GUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/GUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/GUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/GUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/GUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/GUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Ring.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Ring.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/SWMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/SWMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/StopwatchMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/StopwatchMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Stopwatchtime.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Time.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Time.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/TimekeepingMode$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/TimekeepingMode$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/TimekeepingMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/TimekeepingMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/TimerMode$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/TimerMode$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/TimerMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/TimerMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/UI_EX.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/WorldtimeMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/WorldtimeMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/AlarmMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/AlarmMode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/BrightcontrolMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/BrightcontrolMode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/DWS_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DWS_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Ring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Ring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/SWMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/SWMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/StopwatchMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/StopwatchMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/TimekeepingMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/TimekeepingMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/TimerMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/TimerMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/UI_EX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/WorldtimeMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/WorldtimeMode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +77,13 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -35,14 +104,107 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3643678" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Model" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Model" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Model.Main" />
+      <module name="DWS_system.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AlarmModeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DWS_system.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.AlarmModeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BrightcontrolModeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DWS_system.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.BrightcontrolModeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SWModeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DWS_system.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.SWModeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StopwatchModeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DWS_system.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.StopwatchModeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AlarmModeTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.StopwatchModeTest" />
+        <item itemvalue="JUnit.SWModeTest" />
+        <item itemvalue="JUnit.BrightcontrolModeTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591438634778</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="3차 수정">
+      <created>1591580988089</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1591580988089</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,40 +252,73 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="salkdfnklasf" />
-    <option name="LAST_COMMIT_MESSAGE" value="salkdfnklasf" />
+    <MESSAGE value="3차 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="3차 수정" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Plugins" timestamp="1591073098203">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1591073098203" />
-    <state x="552" y="178" key="#Project_Structure" timestamp="1590627695291">
+    <state x="552" y="178" key="#Project_Structure" timestamp="1591607848120">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1590627695291" />
-    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1591438244608">
+    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1591607848120" />
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1591597683425">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591438244608" />
-    <state x="1057" y="30" key="CommitChangelistDialog2" timestamp="1591438633564">
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591597683425" />
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1591611693362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1057" y="30" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591438633564" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1591438643020">
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591611693362" />
+    <state x="1057" y="30" key="CommitChangelistDialog2" timestamp="1591580986565">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591438643020" />
+    <state x="1057" y="30" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591580986565" />
+    <state width="1877" height="273" key="GridCell.Tab.0.bottom" timestamp="1591622772823">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591622772823" />
+    <state width="1877" height="273" key="GridCell.Tab.0.center" timestamp="1591622772823">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="273" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591622772823" />
+    <state width="1877" height="273" key="GridCell.Tab.0.left" timestamp="1591622772823">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="273" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591622772823" />
+    <state width="1877" height="273" key="GridCell.Tab.0.right" timestamp="1591622772823">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="273" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591622772823" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1591607365015">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591607365015" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1591580992419">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591580992419" />
     <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1591073048274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="629" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591073048274" />
+    <state x="724" y="211" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1591621668110">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="724" y="211" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591621668110" />
     <state x="1057" y="43" width="766" height="960" key="find.popup" timestamp="1590939544214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1057" y="43" width="766" height="960" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590939544214" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1591086741175">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1591512330459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591086741175" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591512330459" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1591612015863">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591612015863" />
   </component>
 </project>

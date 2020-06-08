@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class DWS_controller {
 
-    Thread ringThread;
+    Thread ringThread=null;
     /**
      * Default constructor
      */
@@ -16,12 +16,12 @@ public class DWS_controller {
         STM = new StopwatchMode();
         ALM = new AlarmMode();
         WLT = new WorldtimeMode(0);
-        BLC = new BrightcontrolMode();
+
         SWM = new SWMode();
         TRM = new TimerMode(ring);
         ring = new Ring();
         gui = new GUI(this);
-
+        BLC = new BrightcontrolMode(gui);
         currentState = 0;
         Timer timer = new Timer();
         long delay = 0;
@@ -34,13 +34,16 @@ public class DWS_controller {
 
         public void run() {
 
-            if(ringThread != null && ring.isOnOff()){
-                ringThread.interrupt();
-            }
-            if(ring.checkAlarm(TKM.getCurrentTime()) || ring.checkTimer(TKM.getCurrentTime())){
-                Ring newRing = new Ring();
-                ringThread = new Thread(newRing);
-                ringThread.start();
+            if(ring.isOnOff()){
+               // ringThread.interrupt();
+//            }
+//            if(ring.checkAlarm(TKM.getCurrentTime()) || ring.checkTimer(TKM.getCurrentTime())){
+//                Ring newRing = new Ring();
+//                ringThread = new Thread(newRing);
+//                ringThread.start();
+            }else if(BLC.getBrightness() && TKM.getCurrentTime().getMinute()==0 && TKM.getCurrentTime().getSecond()==0){
+                int level = BLC.daylong(TKM.getCurrentTime());
+                gui.watchBLC(level);
             } else {
                 switch (currentState) {
                     case 0:
@@ -49,16 +52,20 @@ public class DWS_controller {
                         gui.setBlack(gui.getTextField(3));
                         gui.setBlack(gui.getTextField(4));
                         gui.setBlack(gui.getTextField(5));
+                        gui.setBlack(gui.getTextField(6));
+                        gui.setBlack(gui.getTextField(7));
+                        gui.setBlack(gui.getTextField(8));
                         gui.setDisplay1(TKM.displayWorld());
                         gui.setDisplay2(TKM.displayYear());
                         gui.setDisplay3(TKM.displayMonth());
                         gui.setDisplay4(TKM.displayDay());
-                        gui.setDisplay5(" ");
+                        gui.setDisplay5(ALM.displayIndicator());
                         gui.setDisplay6(TKM.displayHour());
                         gui.setDisplay7(TKM.displayMinute());
                         gui.setDisplay8(TKM.displaySecond());
                         break;
                     case 1:
+                        gui.setBlack(gui.getTextField(8));
                         gui.setRed(gui.getTextField(1));
                         gui.setDisplay1(TKM.displayWorld());
                         gui.setDisplay2(TKM.displayYear());
@@ -167,17 +174,42 @@ public class DWS_controller {
                     case 13: // alarm[1]
                     case 14: // alarm[2]
                     case 15: // alarm[3]
-                    case 16: // hour
-                    case 17: // minute
                         gui.setDisplay1("ALM");
                         gui.setDisplay2(TKM.displayHour());
+                        gui.setBlack(gui.getTextField(7));
                         gui.setDisplay3(TKM.displayMinute());
+                        gui.setBlack(gui.getTextField(8));
                         gui.setDisplay4(TKM.displaySecond());
                         int idx=ALM.getAlarmIndex();
                         gui.setDisplay6(Integer.toString(idx+1));
-                        gui.setDisplay7(Integer.toString(ALM.getAlarmTime(idx).getHour()));
-                        gui.setDisplay8(Integer.toString(ALM.getAlarmTime(idx).getMinute()));
+                        gui.setDisplay7(Integer.toString(ALM.getAlarmTime(currentState).getHour()));
+                        gui.setDisplay8(Integer.toString(ALM.getAlarmTime(currentState).getMinute()));
                         break ;
+                    case 16: // hour
+                        gui.setDisplay1("ALM");
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setRed(gui.getTextField(7));
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setBlack(gui.getTextField(8));
+                        gui.setDisplay4(TKM.displaySecond());
+                        idx=ALM.getAlarmIndex();
+                        gui.setDisplay6(Integer.toString(idx+1));
+                        gui.setDisplay7(Integer.toString(ALM.getAlarmTime(currentState).getHour()));
+                        gui.setDisplay8(Integer.toString(ALM.getAlarmTime(currentState).getMinute()));
+                        break ;
+                    case 17: // minute
+                        gui.setDisplay1("ALM");
+                        gui.setDisplay2(TKM.displayHour());
+                        gui.setBlack(gui.getTextField(7));
+                        gui.setDisplay3(TKM.displayMinute());
+                        gui.setRed(gui.getTextField(8));
+                        gui.setDisplay4(TKM.displaySecond());
+                        idx=ALM.getAlarmIndex();
+                        gui.setDisplay6(Integer.toString(idx+1));
+                        gui.setDisplay7(Integer.toString(ALM.getAlarmTime(currentState).getHour()));
+                        gui.setDisplay8(Integer.toString(ALM.getAlarmTime(currentState).getMinute()));
+                        break ;
+
                     case 19:
                     case 23:
                     case 24:
@@ -282,16 +314,8 @@ public class DWS_controller {
 
     private static boolean alarmIndicator;
 
-    private boolean brightness;
 
 
-    private Date currentDate;
-
-
-    /**
-     *
-     */
-    private int button;
 
     private TimekeepingMode TKM;
     private AlarmMode ALM;
@@ -304,18 +328,6 @@ public class DWS_controller {
     private GUI gui;
 
 
-    public int checkState() {
-        // TODO implement here
-        return 0;
-    }
-
-    /**
-     * @return
-     */
-    public int changeState() {
-        // TODO implement here
-        return 0;
-    }
 
     /**
      * @param button
@@ -367,8 +379,7 @@ public class DWS_controller {
                 break;
             case 16:
             case 17:
-            case 18:
-                //ALM.changeValue(currentState);
+                ALM.changeValue(currentState,button);
                 break;
             default:
                 return;
@@ -384,11 +395,15 @@ public class DWS_controller {
         int thirdSWidx = Integer.parseInt(SWM.getSelectedSWIdx(2));
         if (currentState == 0) {
             currentState = firstSWidx;
+
         } else if (currentState == firstSWidx) {
             currentState = secondSWidx;
+
         } else if (currentState == secondSWidx) {
             currentState = thirdSWidx;
+
         } else if (currentState == thirdSWidx) {
+
             currentState = 0;
         } else {
             return;
@@ -455,34 +470,38 @@ public class DWS_controller {
      */
 
     public void reqSetAlarmTime(int button) {
+
         switch (currentState) {
             case 12:
             case 13:
             case 14:
             case 15:
                 if (button == 0) {
-                    ALM.getAlarmTime(currentState);
-                } else {
-                    return;
+                    currentState = 16;
+                    ALM.enterSetSection(16);
                 }
                 break;
             case 16:
                 if (button == 0) {
-                    ALM.enterSetSection(16);
+                    currentState = 17;
+                    ALM.enterSetSection(17);
                 } else {
                     return;
                 }
                 break;
             case 17:
                 if (button == 0) {
-                    ALM.enterSetSection(17);
+                    currentState = 16;
+                    ALM.enterSetSection(16);
                 } else {
                     return;
                 }
                 break;
+
             default:
                 break;
         }
+
     }
 
     /**
@@ -530,14 +549,24 @@ public class DWS_controller {
      *
      */
     public void reqTurnOnBC() {
-        BLC.checkBC();
+        boolean check= BLC.checkBC();
+        if(check){
+            BLC.daylong(TKM.getCurrentTime());
+            gui.watchBLC(BLC.getBrightLevel());
+        }
+
     }
 
     /**
      *
      */
     public void reqTurnOffBC() {
-        BLC.checkBC();
+        boolean check = BLC.checkBC();
+        if(check){
+            BLC.daylong(TKM.getCurrentTime());
+            gui.watchBLC(BLC.getBrightLevel());
+        }
+
     }
 
     /**
@@ -545,6 +574,7 @@ public class DWS_controller {
      */
     public void reqControlBC() {
         BLC.changeBClevel();
+        gui.watchBLC(BLC.getBrightLevel());
     }
 
     /**
@@ -646,6 +676,16 @@ public class DWS_controller {
                     break;
                 case 16:
                 case 17:
+                    if (button == 0) {
+                        reqSetAlarmTime(button);
+                    } else if (button == 1 || button == 3) {
+                        reqChangeValue(button);
+                    } else if (button == 2) {
+                        currentState = 12;
+                    } else {
+                        return;
+                    }
+                    break;
                 case 18:
                     if (button == 0) {
                         reqSetAlarmTime(button);
@@ -737,25 +777,20 @@ public class DWS_controller {
         }
     }
 
-    /**
-     *
-     */
-    public void turnOnAlarmIndicator() {
-        // TODO implement here
+
+    public void controlAlarmIndicator() {
+        ALM.checkAlarmArray();
     }
 
-    /**
-     *
-     */
-    public void turnOffAlarmIndicator() {
-        // TODO implement here
+    public void setCurrentState(int currentState) {
+        DWS_controller.currentState = currentState;
     }
 
-    /**
-     *
-     */
-    public void checkCurrentTime() {
-        // TODO implement here
+    public StopwatchMode getSTM() {
+        return STM;
     }
 
+    public int getCurrentState() {
+        return currentState;
+    }
 }

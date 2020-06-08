@@ -14,7 +14,7 @@ public class Ring implements Runnable{
     TimerMode TMR;
     Toolkit toolkit = Toolkit.getDefaultToolkit();
     public Ring(){
-        onOff=true;
+        onOff=false;
     }
 
     public Ring(AlarmMode alarmMode, TimerMode timerMode) {
@@ -85,7 +85,7 @@ public class Ring implements Runnable{
     }
 
     /**
-     * 
+     *
      */
     public void check3Second() {
         // TODO implement here

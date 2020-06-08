@@ -10,8 +10,6 @@ public class TimekeepingMode{
     private Calendar time;
     private String[] world = {"KOREA", "AMERICA", "EUROPE", "CHINA", "RUSSIA", "SINGAPORE"};
     private String currentWorld = "KOREA";
-    private String[] displayTime = new String[3];
-    private String[] displayDate = new String[3];
 
     public TimekeepingMode() {
         this.time = Calendar.getInstance();
@@ -55,7 +53,6 @@ public class TimekeepingMode{
 
     public void changeValue(int currentState, int button) {
         switch (currentState) {
-            // time의 값을 currentTime에 추가해주기.
             case 2: // year
                 if (button == 1) {
                     time.add(Calendar.YEAR, 1);
@@ -109,7 +106,7 @@ public class TimekeepingMode{
                     time.add(Calendar.SECOND, 1);
                     currentTime.setSecond(time.get(Calendar.SECOND));
                 } else if (button == 3) {
-                    time.add(Calendar.MINUTE, -1);
+                    time.add(Calendar.SECOND, -1);
                     currentTime.setSecond(time.get(Calendar.SECOND));
                 }
                 break;
@@ -180,13 +177,6 @@ public class TimekeepingMode{
         }
     };
 
-    public String displayTime() {
-        displayTime[0] = (time.get(Calendar.HOUR_OF_DAY) < 10 ? "0" : "") + time.get(Calendar.HOUR_OF_DAY) + " ";
-        displayTime[1] = (time.get(Calendar.MINUTE) < 10 ? "0" : "")+ time.get(Calendar.MINUTE) + " ";
-        displayTime[2] = (time.get(Calendar.SECOND) < 10 ? "0" : "")+time.get(Calendar.SECOND) + " ";
-        String result = displayTime[0] + displayTime[1] + displayTime[2];
-        return result;
-    }
 
     public String displayYear(){
         return (time.get(Calendar.YEAR) + " ");
@@ -212,18 +202,42 @@ public class TimekeepingMode{
         return (time.get(Calendar.SECOND) < 10 ? "0" : "")+time.get(Calendar.SECOND) + " ";
     }
 
-    public String displayDate() {
-        displayDate[0] = (time.get(Calendar.YEAR) + " ");
-        displayDate[1] = (time.get(Calendar.MONTH) < 9 ? "0" : "") + (time.get(Calendar.MONTH)+1 + " ");
-        displayDate[2] = (time.get(Calendar.DAY_OF_MONTH) < 10 ? "0" : "") + (time.get(Calendar.DAY_OF_MONTH));
-        String result = displayDate[0] + displayDate[1] + displayDate[2];
-        return result;
-    }
 
     public String displayWorld(){
         return this.currentWorld;
     }
 
+    public Time getCurrentTime() {
+        return currentTime;
+    }
 
+    public void setValue(int currentState, int value) {
+        switch (currentState) {
 
+            case 2: // year
+                time.set(Calendar.YEAR, value);
+                currentDate.setYear(time.get(Calendar.YEAR));
+                break;
+            case 3: //month
+                time.set(Calendar.MONTH, value);
+                currentDate.setMonth(time.get(Calendar.MONTH));
+                break;
+            case 4: // day
+                time.set(Calendar.DAY_OF_MONTH, value);
+                currentDate.setDay(time.get(Calendar.DATE));
+                break;
+            case 5: //hour
+                time.set(Calendar.HOUR_OF_DAY, value);
+                currentTime.setHour(time.get(Calendar.HOUR_OF_DAY));
+                break;
+            case 6: //minute
+                time.set(Calendar.MINUTE, value);
+                currentTime.setMinute(time.get(Calendar.MINUTE));
+                break;
+            case 7:
+                time.set(Calendar.SECOND, value);
+                currentTime.setSecond(time.get(Calendar.SECOND));
+                break;
+        }
+    }
 }
