@@ -13,7 +13,7 @@ public class TimekeepingMode{
 
     public TimekeepingMode() {
         this.time = Calendar.getInstance();
-        this.time.clear();
+
         currentDate.setYear(time.get(Calendar.YEAR));
         currentDate.setMonth(time.get(Calendar.MONTH));
         currentDate.setDay(time.get(Calendar.DAY_OF_MONTH));
@@ -21,10 +21,10 @@ public class TimekeepingMode{
         currentTime.setMinute(time.get(Calendar.MINUTE));
         currentTime.setSecond(time.get(Calendar.SECOND));
 
-        Timer timer = new Timer();
+        Timer timekeepingTimer = new Timer();
         long delay =0;
         long inteval = 1000;
-        timer.scheduleAtFixedRate(calculateTask,delay,inteval);
+        timekeepingTimer.scheduleAtFixedRate(calculateTask,delay,inteval);
     }
 
     public int enterSetSection(int currentState) {
@@ -49,7 +49,7 @@ public class TimekeepingMode{
         return 0;
     }
 
-    public void changeMode(int currentState) { }
+
 
     public void changeValue(int currentState, int button) {
         switch (currentState) {

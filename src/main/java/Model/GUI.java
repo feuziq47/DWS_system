@@ -17,6 +17,7 @@ public class GUI extends JFrame{
         dws=dws_controller;
         this.setTitle("DWS");
         this.setSize(600,650);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         img = new ImageIcon("C:\\Users\\feuzi\\IdeaProjects\\DWS_system\\src\\main\\resources\\clock.png");
 

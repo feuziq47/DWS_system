@@ -44,17 +44,43 @@ class TimerModeTest {
     @Test
     void startTimer() {
         // timerTime의 값이 음수 값 이하로 측정되는지 가지는지
-        TimerMode timer = new TimerMode();
+        Ring r = new Ring();
+        TimerMode timer = new TimerMode(r);
+
         timer.setTimerTime(0 ,0,0);
         try {
-            Thread.sleep(10);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        assertEquals(0,timer.startTimer().getHour());
-        assertEquals(0,timer.startTimer().getMinute());
-        assertEquals(0,timer.startTimer().getSecond());
+        assertEquals(0,timer.getTimerTime().getHour());
+        assertEquals(0,timer.getTimerTime().getMinute());
+        assertEquals(0,timer.getTimerTime().getSecond());
 
+        // start와 stop이 반복되어도 일정한 시간 간격을 유지하는가
+        timer.setTimerTime(0 ,0,10);
+        timer.startTimer();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        timer.stopTimer();
+        timer.startTimer();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        timer.stopTimer();
+        timer.startTimer();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        timer.stopTimer();
+        assertEquals(7,timer.getTimerTime().getSecond());
 
     }
 
@@ -71,7 +97,7 @@ class TimerModeTest {
             e.printStackTrace();
         }
         timer.stopTimer();
-        assertEquals(2,timer.getTimerTime().getSecond());
+        assertEquals(3,timer.getTimerTime().getSecond());
 
     }
 

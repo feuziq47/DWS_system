@@ -1,20 +1,10 @@
 package Model;
-import java.util.*;
 
-/**
- * 
- */
-public interface UI {
+import java.awt.*;
+import java.util.Timer;
 
+public class UI {
 
-    /**
-     * 
-     */
-    public void display1(String string);
-
-    public void display2(String string);
-
-    public void displayMain(String string);
-
+    
 
 }

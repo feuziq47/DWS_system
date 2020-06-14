@@ -24,8 +24,8 @@ public class TimerMode{
     }
 
 
-    Timer timer ;
-
+    private Timer timer;
+    private TimerTask timerTask77;
 
     private boolean onOff=false;
 
@@ -87,14 +87,17 @@ public class TimerMode{
 
     public Time startTimer() {
         onOff=true;
+        timerTime.setM_second(0);
         timer = new Timer();
-        tempTask();
+
+        startTimerTask();
         return timerTime;
     }
 
     public Time stopTimer() {
         onOff=false;
-        timer = null;
+        timerTime.setM_second(1);
+        stopTimerTask();
         return null;
     }
 
@@ -105,21 +108,22 @@ public class TimerMode{
         timerTime.setM_second(0);
     }
 
-    public void tempTask(){
-        TimerTask timerTask = new TimerTask() {
+    public void startTimerTask(){
+        stopTimerTask();
+        timerTask77 = new TimerTask() {
             @Override
             public void run() {
-                if(onOff==true){
+                if(isOnOff()){
                     int sec=timerTime.getSecond();
                     int min=timerTime.getMinute();
                     int hour= timerTime.getHour();
                     if(sec ==0&&min==0&&hour==0){
+                        timerTime.setM_second(2);
+                        ring.setOnOff(true);
                         onOff = false;
-                        //ring.setOnOff(true);
-                        timerTime.setHour(0);
-                        timerTime.setMinute(0);
-                        timerTime.setSecond(0);
-                        timerTime.setM_second(0);
+
+                        stopTimerTask();
+
                     }
                     else if(sec>0){
                         timerTime.setSecond(--sec);
@@ -139,9 +143,17 @@ public class TimerMode{
                 }
             }
         };
-        timer.scheduleAtFixedRate(timerTask,0,1000);
+        timer.scheduleAtFixedRate(timerTask77,0,1000);
     }
 
+    public void stopTimerTask(){
+        if(timerTask77 !=null){
+            timerTask77.cancel();
+
+            timerTask77 =null;
+        }
+
+    }
 
     public Time getTimerTime(){
         return timerTime;
@@ -172,5 +184,9 @@ public class TimerMode{
 
     public boolean isOnOff() {
         return onOff;
+    }
+
+    public void setOnOff(boolean onOff) {
+        this.onOff = onOff;
     }
 }

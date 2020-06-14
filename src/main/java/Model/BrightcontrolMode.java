@@ -48,7 +48,7 @@ public class BrightcontrolMode {
             }else{
                 brightLevel++;
             }
-            //gui.watchBLC(brightLevel);
+
         }
         return brightLevel;
     }
